@@ -1,100 +1,70 @@
 ﻿using System;
 
-namespace building_material_using_class
+namespace ConsoleApp1
 {
-    
-
-    class Collecting_info
-    {
-        //variables
-        int ordcement;
-        int ordgravel;
-        int ordsand;
-        string conf = "yes";
-        Double cost = 0;
-
-
-        public void Acceptorder()
-        {
-            Console.WriteLine("enter order");
-            Console.WriteLine("cement");
-            ordcement = int.Parse (Console.ReadLine());
-            Console.ReadLine();
-            Console.WriteLine("gravel");
-            ordgravel = int.Parse(Console.ReadLine());
-            Console.ReadLine();
-            Console.WriteLine("sand");
-            ordsand = int.Parse(Console.ReadLine());
-            Console.ReadLine();
-        }
-        public void Confirmation()
-        {
-            int x = 1;
-            while (x > 0)
-            { 
-             Console.WriteLine("cement {0}", ordcement);
-             Console.WriteLine("gravel {0}", ordgravel);
-             Console.WriteLine("sand {0}", ordsand);
-             Console.WriteLine("confirm order?");
-             string confirm = Console.ReadLine();
-                if (confirm.Equals(conf))
-                {
-                    Console.WriteLine("order confirmed");
-                    x = 0;
-                }
-            
-                else
-                {
-                    Console.WriteLine("reenter order");
-                    Console.WriteLine("enter order");
-                    Console.WriteLine("cement");
-                    ordcement = int.Parse(Console.ReadLine());
-                    Console.ReadLine();
-                    Console.WriteLine("gravel");
-                    ordgravel = int.Parse(Console.ReadLine());
-                    Console.ReadLine();
-                    Console.WriteLine("sand");
-                    ordsand = int.Parse(Console.ReadLine());
-                    Console.ReadLine();
-                }
-                cost = ordcement * 2.00 + ordgravel * 1.50 + ordsand * 1.00;
-            }
-            
-            
-                
-            
-
-        }
-        
-        public void Display()
-        {
-          Console.WriteLine("cost: {0}",cost);
-        }
-    }   
-   
-    class Execute
+    class Program
     {
         static void Main(string[] args)
         {
-            Collecting_info c = new Collecting_info();
-            c.Acceptorder();
-            c.Confirmation();
-            c.Display();
-            
+            //declare variables here
+            int x;
+            string falsifier = "no";
+            int z; //z is used to confirm if there is anything else
+            //start program here
+            //y is input for order type
+            float ccounter = 0f; float fcounter = 0f; float bcounter = 0f; float dcounter = 0f; float rcounter = 0f;
+            float price = 0f;
+            float cprice = 2.00f; float fprice = 1.00f; float bprice = 2.00f; float dprice = 0.50f;float rprice = 3.00f;
+                Console.WriteLine("Enter Order");
+                Console.WriteLine("we sell:");
+                Console.WriteLine("fried chicken-----$2.00");
+                Console.WriteLine("fries-------------$1.00");
+                Console.WriteLine("burger------------$2.00");
+                Console.WriteLine("drink-------------$0.50");
+                Console.WriteLine("fried rice--------$3.00");
+            do
+            {
+                string y = Console.ReadLine();
+
+                Console.WriteLine("enter amount");
+                x = int.Parse(Console.ReadLine());
+                Console.WriteLine("Anything else?");
+
+                string b = Console.ReadLine();
+
+                if (b.Equals(falsifier))
+                { z = 1; }
+
+                else { z = 2; }
+
+                if (y.Equals("fried chicken"))
+                { ccounter = ccounter + x; }
+                else if (y.Equals("fries"))
+                { fcounter = fcounter + x; }
+                else if (y.Equals("burger"))
+                { bcounter = bcounter + x; }
+                else if (y.Equals("drink"))
+                { dcounter = dcounter + x; }
+                else if (y.Equals("fried rice"))
+                { rcounter = rcounter + x; }
+                else
+                { Console.WriteLine("previous order Invalid order. Please Re-enter your previous order");z = 2; }
+            } while (z.Equals(2));
+
+            price = price + (ccounter * cprice);
+            price = price + (fcounter * fprice);
+            price = price + (bcounter * bprice);
+            price = price + (dcounter * dprice);
+            price = price + (rcounter * rprice);
+
+            Console.WriteLine("The total amount is");
+            Console.Write("$ "); Console.WriteLine(price);
+
+
+
             Console.ReadLine();
 
         }
-
-        
-        
-            
-        
     }
-   
-    
-        
-    
-
-    
- }
+}
 
